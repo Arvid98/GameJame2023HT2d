@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mo : MonoBehaviour
+public class Movment : MonoBehaviour
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     Rigidbody2D rb;
