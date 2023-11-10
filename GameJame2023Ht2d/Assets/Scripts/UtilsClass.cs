@@ -66,4 +66,21 @@ public static class UtilsClass
         Vector3 mouseWorldPosition = GetMouseWorldPosition();
         return (mouseWorldPosition - fromPosition).normalized;
     }
+
+    public static Vector3 GetVectorFromAngle(float angle)
+    {
+        float angleRed = angle * ( MathF.PI/180f);
+        return new Vector3(Mathf.Cos(angleRed), Mathf.Sin(angleRed));
+    }
+
+    public static float GetAngleFromVectorFloat (Vector3 dir)
+    {
+        dir = dir.normalized;
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if( n < 0)
+        {
+            n += 360;
+        }
+        return n;
+    }
 }

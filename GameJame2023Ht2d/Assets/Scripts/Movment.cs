@@ -27,6 +27,11 @@ public class Movment : MonoBehaviour
     [SerializeField] Sprite sBack;
     [SerializeField] Sprite sLeft;
     [SerializeField] Sprite sRight;
+
+
+
+    [SerializeField] private FieldOfView fieldOfView;
+    
     void ChangeSprite()
     {
         spriteRenderer.sprite = newSprite;
@@ -42,8 +47,16 @@ public class Movment : MonoBehaviour
     {
         Movement();
         ChangeSprite();
+        FieldOf();
     }
 
+    private void FieldOf()
+    {
+        Vector3 targetPosition = UtilsClass.GetMouseWorldPosition();
+        Vector3 aimDir = targetPosition- transform.position;
+        fieldOfView.SetOrigin(transform.position);
+        fieldOfView.SetAimDirection(aimDir);
+    }
 
     //private void OnTriggerStay2D(Collider2D collision)
     //{
