@@ -6,6 +6,6 @@ public class PathFinding
 {
     public PathFinding(int width, int height)
     {
-
+        
     }
 }
