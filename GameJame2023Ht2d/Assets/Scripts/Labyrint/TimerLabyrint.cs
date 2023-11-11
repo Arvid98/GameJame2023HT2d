@@ -5,7 +5,7 @@ using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Timer : MonoBehaviour
+public class TimerLabyrint : MonoBehaviour
 {
 
     [SerializeField] Transform player;

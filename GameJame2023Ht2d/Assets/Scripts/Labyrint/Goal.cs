@@ -34,7 +34,7 @@ public class Goal : MonoBehaviour
 
             if (countDown < 0)
             {
-                SceneManager.LoadScene("Labyrint");
+                SceneManager.LoadScene("Windows");
 
             }
         }

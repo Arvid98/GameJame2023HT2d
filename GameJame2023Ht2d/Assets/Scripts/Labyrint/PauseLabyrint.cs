@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Pause : MonoBehaviour
+public class PauseLabyrint : MonoBehaviour
 {
     private bool isPaused = false; // Start with the game paused
     public TextMeshProUGUI startText;
+    public Transform mus;
 
-
+    private void Awake()
+    {
+        mus.position = new Vector2(110, -125);
+    }
     void Start()
     {
+        
         TogglePause(); // Call TogglePause to set the initial state
     }
 
