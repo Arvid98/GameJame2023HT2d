@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BoidManager : MonoBehaviour
 {
@@ -27,7 +28,8 @@ public class BoidManager : MonoBehaviour
         }
         if (deadBoids >= boidsArray.Length)
         {
-            Debug.Log("all dead");
+            LevelManager.level = 4;
+            SceneManager.LoadScene("Windows");
         }
         deadBoids = 0;
 
