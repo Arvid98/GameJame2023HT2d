@@ -170,6 +170,7 @@ MonoBehaviour:
   sBack: {fileID: 0}
   sLeft: {fileID: 0}
   sRight: {fileID: 0}
+  fieldOfView: {fileID: 0}
 --- !u!212 &320612351
 SpriteRenderer:
   m_ObjectHideFlags: 0
