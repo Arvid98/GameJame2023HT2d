@@ -26,16 +26,17 @@ public class Dialogue : MonoBehaviour
             lines[1] = "YOU: Yes sir boss sir!";
             LevelManager.level = 1;
         }
-        else if (LevelManager.level == 1)
+        else if (LevelManager.level == 2)
         {
             lines[0] = "BOSS: Gj, now go to the World Wide Web and collect all the data from this poor little guy";
             lines[1] = "YOU: Muhahahahha!";
-            LevelManager.level = 2;
+            LevelManager.level = 3;
         }
-        else if(LevelManager.level == 2) 
+        else if(LevelManager.level == 4) 
         {
             lines[0] = "BOSS: Nice job Mr.Hackerman! You are done now, but just to be a little more devious and evil, lets install some nasty viruses on his computer.";
             lines[1] = "YOU: That sounds like a good idea";
+            LevelManager.level = 5;
         }
         StartDialogue();
     }
