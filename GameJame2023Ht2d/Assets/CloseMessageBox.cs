@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class CloseMessageBox : MonoBehaviour
 {
-    GameObject myGameObject;
+    public GameObject myGameObject;
     private void Start()
     {
-        myGameObject = GetComponent<GameObject>();
+       
     }
     // Start is called before the first frame update
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && Input.GetMouseButton(0))
         {
-            myGameObject.SetActive(true);
+            
+            myGameObject.SetActive(false);
         }
     }
 }
