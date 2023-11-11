@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Boid : MonoBehaviour
@@ -34,16 +35,22 @@ public class Boid : MonoBehaviour
 
     [SerializeField] GameObject player;
     [SerializeField] GameObject wall;
-
+    [SerializeField] GameObject active;
     private Vector2 targetPosition;
     bool shouldFlee;
     public bool dead;
     [SerializeField] Timer timer;
+
+   
+
+
     void Start()
     {
+
+        
         gameObject.GetComponent<Renderer>().material.color = Color.green;
         allBoids = new List<GameObject>(GameObject.FindGameObjectsWithTag("Boid"));
-
+        
         dead = false;
          rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.up * speed;
@@ -194,8 +201,10 @@ public class Boid : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // Ändra riktningen när en kollision med väggen inträffar
-            gameObject.GetComponent<Renderer>().material.color = Color.red;
             dead = true;
+            active.SetActive(false);
+            gameObject.GetComponent<Renderer>().material.color = Color.black;
+          
         }
     }
    
