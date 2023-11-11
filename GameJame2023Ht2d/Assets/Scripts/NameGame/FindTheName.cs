@@ -4,6 +4,7 @@ using static UnityEditor.PlayerSettings;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class FindTheName : MonoBehaviour
 {
@@ -124,6 +125,9 @@ public class FindTheName : MonoBehaviour
         if(clickedLetters == name)
         {
             win = true;
+            LevelManager.level = 2;
+            SceneManager.LoadScene("Windows");
+
         }
     }
 }
