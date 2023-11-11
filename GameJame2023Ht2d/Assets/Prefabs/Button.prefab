@@ -178,6 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e049955516e2c44bb12027fa9b962a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  pos: {x: 0, y: 0}
+  activeButton: 0
 --- !u!1 &8140327485284219101
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +285,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.18222678, g: 0.4245283, b: 0.18222678, a: 1}
     m_PressedColor: {r: 0.011661771, g: 0.18867922, b: 0, a: 1}
     m_SelectedColor: {r: 0.011764707, g: 0.18823531, b: 0, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.011764707, g: 0.18823531, b: 0, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -325,3 +328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e049955516e2c44bb12027fa9b962a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  pos: {x: 0, y: 0}
+  activeButton: 0

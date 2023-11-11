@@ -7,9 +7,11 @@ public class ButtonScript : MonoBehaviour
     public FindTheName owner;
     public Vector2 pos;
     public bool activeButton;
+    public bool placed;
     void Start()
     {
         activeButton = false;
+        placed = true;
     }
 
     // Update is called once per frame
