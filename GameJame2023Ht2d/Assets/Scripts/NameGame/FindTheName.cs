@@ -10,6 +10,8 @@ public class FindTheName : MonoBehaviour
     Vector2 buttonSize = new Vector2(100, 100);
     Vector2 spawnPoint = new Vector2(-500f, 300f);
 
+
+
     public GameObject ParentPanel;
 
     void Start()
@@ -33,5 +35,10 @@ public class FindTheName : MonoBehaviour
     void SpawnObject(Vector2 pos) 
     { 
         Instantiate(square, pos, Quaternion.identity, ParentPanel.transform).transform.localPosition= new Vector3(pos.x, pos.y, 0);
+    }
+
+    void Select()
+    {
+
     }
 }
