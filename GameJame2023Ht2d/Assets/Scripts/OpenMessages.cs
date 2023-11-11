@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class OpenMessages : MonoBehaviour
 {
-    private BoxCollider2D myCollider;
-    public bool messageBoxIsOpen = false;
+    public GameObject canvasToOpen;
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        myCollider = GetComponent<BoxCollider2D>();
+        
     }
 
     // Update is called once per frame
-    void Update()
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (myCollider != null && myCollider.isTrigger)
+        if (other.CompareTag("Player"))
         {
-            messageBoxIsOpen= true;
+            canvasToOpen.SetActive(true);
         }
     }
 }
