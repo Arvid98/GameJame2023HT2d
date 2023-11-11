@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
@@ -9,10 +10,26 @@ public class Goal : MonoBehaviour
     public Transform map;
     public Transform timer;
     public TextMeshProUGUI timerText;
+    bool goalReached = false;
+    float countDown = 2;
 
     private void Start()
     {
         popupText.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (goalReached)
+        {
+            countDown = countDown - Time.deltaTime;
+
+            if (countDown < 0)
+            {
+                SceneManager.LoadScene("Labyrint");
+
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -25,11 +42,12 @@ public class Goal : MonoBehaviour
             
             popupText.gameObject.SetActive(true);
             popupText.text = "VIRUS TRANSFERED";
-
+            goalReached= true;
 
         }
       
     }
+    
 
     //private void OnTriggerExit(Collider other)
     //{
