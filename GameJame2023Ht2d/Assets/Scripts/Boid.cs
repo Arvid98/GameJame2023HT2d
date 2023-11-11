@@ -194,18 +194,11 @@ public class Boid : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // Ändra riktningen när en kollision med väggen inträffar
-            gameObject.GetComponent<Renderer>().material.color = Color.red; 
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            dead = true;
             gameObject.GetComponent<Renderer>().material.color = Color.red;
+            dead = true;
         }
-
     }
+   
     Vector2 Separate()
     {
         Vector2 separation = Vector2.zero;
