@@ -41,7 +41,7 @@ public class Boid : MonoBehaviour
     public bool dead;
     [SerializeField] Timer timer;
 
-    public Color newColor = Color.red;
+   
 
 
     void Start()
