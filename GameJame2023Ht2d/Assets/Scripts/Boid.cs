@@ -21,9 +21,9 @@ public class Boid : MonoBehaviour
     public float rotationSpeed = 1.0f;
     public float neighborRadius = 10.0f;
 
-    public float x = 2;
-    public float y = 2;
-    
+    public float x = 1;
+    public float y = 1;
+
     public float maxFlyForce = 10;
 
     private List<GameObject> allBoids;
@@ -33,18 +33,19 @@ public class Boid : MonoBehaviour
     private float distance;
 
     [SerializeField] GameObject player;
+    [SerializeField] GameObject wall;
 
     private Vector2 targetPosition;
-
-    private Vector2 flowVector;
     bool shouldFlee;
+    public bool dead;
+    [SerializeField] Timer timer;
     void Start()
     {
-    
+        gameObject.GetComponent<Renderer>().material.color = Color.green;
         allBoids = new List<GameObject>(GameObject.FindGameObjectsWithTag("Boid"));
-        
-        
-        rb = GetComponent<Rigidbody2D>();
+
+        dead = false;
+         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.up * speed;
 
         GameObject enemyObject = GameObject.FindGameObjectWithTag("Enemy");
@@ -54,24 +55,24 @@ public class Boid : MonoBehaviour
         }
         else
         {
-         
-            targetPosition = new Vector2(0f, 0f); 
+
+            targetPosition = new Vector2(0f, 0f);
         }
     }
 
     void Update()
     {
+       
         Vector2 flowDirection = GetFlowDirection();
         Vector2 separation = Separate();
         Vector2 alignment = Align();
         Vector2 cohesion = Cohere();
-        Vector2 avoid =  Avoid();
+        Vector2 avoid = Avoid();
         Vector2 noise = GetNoise();
 
 
 
-        // Combine the rules with weights
-        //+    + flowDirection  + avoid
+       
 
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
@@ -80,18 +81,14 @@ public class Boid : MonoBehaviour
 
         if (distance < distanceBetween)
         {
-           
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, -speed*2 * Time.deltaTime);
+
+            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, -speed * 2.5f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(this.transform.position, wall.transform.position, -speed * 2 * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle2);
         }
 
-        Vector2 moveDirection = separation  + cohesion + alignment + avoid + flowDirection + noise;
-        //if (shouldFlee)
-        //{
-
-        //}
-        //moveDirection += Flee(targetPosition);
-        
+        Vector2 moveDirection = separation + cohesion + alignment + avoid + flowDirection + noise;
+ 
         rb.velocity = moveDirection.normalized * speed;
 
         // Rotation
@@ -111,28 +108,26 @@ public class Boid : MonoBehaviour
 
     Vector2 GetFlowDirection()
     {
-        flowVector = new Vector2(x, y);
-        return flowVector;
+
+        x = timer.xTiemr;
+        y = timer.yTiemr;
+        return new Vector2(x, y);
     }
 
-    void SetFlowDirection()
-    {
-        flowVector = -flowVector;
-    }
 
     Vector2 Flee(Vector2 fleeTarget)
     {
-        
+
         Vector2 fleeDirection = rb.position - fleeTarget;
 
-       
+
         fleeDirection.Normalize();
         fleeDirection *= maxSpeed;
 
-       
+
         Vector2 fleeForce = fleeDirection - rb.velocity;
 
-       
+
         return Vector2.ClampMagnitude(fleeForce, maxFlyForce);
     }
 
@@ -176,7 +171,7 @@ public class Boid : MonoBehaviour
     bool IsRunning()
     {
         RaycastHit2D hit = Physics2D.CircleCast(rb.position, boundsRadius, rb.velocity.normalized, collisionAvoidDst, obstacleMask);
-        
+
         if (hit.collider != null)
         {
             return true;
@@ -185,23 +180,32 @@ public class Boid : MonoBehaviour
         return false;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-       
-        if (collision.CompareTag("Wall"))
-        {
 
-            SetFlowDirection();
-        }
-
-    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Om Boid-kollision med väggen, ändra riktning
-       
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            // Ändra riktningen när en kollision med väggen inträffar
+            Vector2 reflectDirection = Vector2.Reflect(rb.velocity.normalized, collision.contacts[0].normal);
+            rb.velocity = reflectDirection * speed;
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Ändra riktningen när en kollision med väggen inträffar
+            gameObject.GetComponent<Renderer>().material.color = Color.red; 
+        }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            dead = true;
+            gameObject.GetComponent<Renderer>().material.color = Color.red;
+        }
 
+    }
     Vector2 Separate()
     {
         Vector2 separation = Vector2.zero;
@@ -293,7 +297,6 @@ public class Boid : MonoBehaviour
 
     Vector2 GetNoise()
     {
-        
         return new Vector2(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
     }
 }

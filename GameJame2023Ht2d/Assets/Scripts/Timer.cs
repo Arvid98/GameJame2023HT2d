@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    public float timerDuration = 10f; 
+    public float timerDuration = 2f; 
     private float timer;
-    public float xTiemr;
-    public float yTiemr;
-
+    public float xTiemr =1f;
+    public float yTiemr = 1f;
+    public float radius = 5f;
     void Start()
     {
         // Initialize the timer
@@ -17,17 +17,16 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-      
         if (timer > 0f)
         {
             timer -= Time.deltaTime; 
         }
         else
-        {          
-            xTiemr = -1f;
-            yTiemr = -1f;
-            Debug.Log("Timer has expired!");         
-            timer = timerDuration;
+        {
+            xTiemr = Random.Range(-2f, 2f);
+            yTiemr = Random.Range(-2f, 2f);
+            radius = Random.Range(0, 7f);
+           timer = timerDuration;
         }
     }
 }
