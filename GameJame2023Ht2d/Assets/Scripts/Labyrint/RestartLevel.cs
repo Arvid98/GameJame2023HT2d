@@ -11,7 +11,7 @@ public class RestartLevel : MonoBehaviour
         if (hitObject.tag == "Player")
         {
             SceneManager.LoadScene("Labyrint");
-            Debug.Log("test");
+            //Debug.Log("test");
         }
     }
 }

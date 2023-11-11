@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
-    public TextMeshProUGUI popupText; // Reference to the Text component for displaying the message
-    public Transform map;
+    public TextMeshProUGUI popupText;
+    public List<GameObject> mapList; 
+    //public Transform map;
+
+    Transform chosenMap;
     public Transform timer;
     public TextMeshProUGUI timerText;
     bool goalReached = false;
@@ -16,6 +19,11 @@ public class Goal : MonoBehaviour
     private void Start()
     {
         popupText.gameObject.SetActive(false);
+        System.Random random = new System.Random();
+        int intMap=random.Next(0,3);
+        chosenMap = mapList[intMap].transform;
+        chosenMap.gameObject.SetActive(true);
+        
     }
 
     private void Update()
@@ -36,7 +44,7 @@ public class Goal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            map.gameObject.SetActive(false);
+            chosenMap.gameObject.SetActive(false);
             timer.gameObject.SetActive(false);
             timerText.gameObject.SetActive(false);
             
