@@ -107,6 +107,18 @@ public class Movment : MonoBehaviour
     //        }
     //    }
     //}
+
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Boid"))
+        {
+            Destroy(collision.gameObject);
+
+        }
+
+    }
+
     public void Movement()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
