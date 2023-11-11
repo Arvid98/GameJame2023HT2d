@@ -7,14 +7,14 @@ public class Movment : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     Rigidbody2D rb;
     BoxCollider2D collider;
-    [SerializeField] AudioSource pickupSound;
-    [SerializeField] AudioSource moveSound;
+    //[SerializeField] AudioSource pickupSound;
+    //[SerializeField] AudioSource moveSound;
     [SerializeField] float normalSpeed = 5.0f;
     [SerializeField] float boostedSpeed = 10.0f;
-    [SerializeField] private GameObject visualGameObjectFront;
-    [SerializeField] private GameObject visualGameObjectBack;
-    [SerializeField] private GameObject visualGameObjectLeft;
-    [SerializeField] private GameObject visualGameObjectRight;
+    //[SerializeField] private GameObject visualGameObjectFront;
+    //[SerializeField] private GameObject visualGameObjectBack;
+    //[SerializeField] private GameObject visualGameObjectLeft;
+    //[SerializeField] private GameObject visualGameObjectRight;
 
     private float currentSpeed; // Tracks the current speed
     private bool isSprinting; // Tracks if the player is sprinting
@@ -22,20 +22,20 @@ public class Movment : MonoBehaviour
     [SerializeField] private bool hasKey;  // when the players pick up one key turn true
     [SerializeField] private bool hasHammer;  // when the players pick up one key turn true
     //GameObject doorObj;
-    [SerializeField] Sprite newSprite;
-    [SerializeField] Sprite sFront;
-    [SerializeField] Sprite sBack;
-    [SerializeField] Sprite sLeft;
-    [SerializeField] Sprite sRight;
+    //[SerializeField] Sprite newSprite;
+    //[SerializeField] Sprite sFront;
+    //[SerializeField] Sprite sBack;
+    //[SerializeField] Sprite sLeft;
+    //[SerializeField] Sprite sRight;
 
 
 
-    [SerializeField] private FieldOfView fieldOfView;
+    //[SerializeField] private FieldOfView fieldOfView;
     
-    void ChangeSprite()
-    {
-        spriteRenderer.sprite = newSprite;
-    }
+    //void ChangeSprite()
+    //{
+    //    spriteRenderer.sprite = newSprite;
+    //}
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -46,17 +46,17 @@ public class Movment : MonoBehaviour
     void Update()
     {
         Movement();
-        ChangeSprite();
-        FieldOf();
+        //ChangeSprite();
+        //FieldOf();
     }
 
-    private void FieldOf()
-    {
-        Vector3 targetPosition = UtilsClass.GetMouseWorldPosition();
-        Vector3 aimDir = targetPosition- transform.position;
-        fieldOfView.SetOrigin(transform.position);
-        fieldOfView.SetAimDirection(aimDir);
-    }
+    //private void FieldOf()
+    //{
+    //    Vector3 targetPosition = UtilsClass.GetMouseWorldPosition();
+    //    Vector3 aimDir = targetPosition- transform.position;
+    //    fieldOfView.SetOrigin(transform.position);
+    //    fieldOfView.SetAimDirection(aimDir);
+    //}
 
     //private void OnTriggerStay2D(Collider2D collision)
     //{
@@ -141,7 +141,7 @@ public class Movment : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 currentSpeed = boostedSpeed; // Set the current speed to boosted speed
-                moveSound.pitch = 1.3f; // Double the pitch (play at double speed)
+                //moveSound.pitch = 1.3f; // Double the pitch (play at double speed)
                 isSprinting = true; // Player is sprinting
             }
         }
@@ -149,36 +149,36 @@ public class Movment : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             currentSpeed = normalSpeed; // Set the current speed back to normal speed
-            moveSound.pitch = 1.0f; // Reset the pitch to normal
+            //moveSound.pitch = 1.0f; // Reset the pitch to normal
             isSprinting = false; // Player is not sprinting
         }
 
-        if (!isSprinting && (moveHorizontal == 0 && moveVertical == 0))
-        {
-            moveSound.Pause(); // Pause the move sound if not sprinting and not moving
-        }
-        else
-        {
-            moveSound.UnPause(); // Unpause the move sound if sprinting or moving
-        }
+        //if (!isSprinting && (moveHorizontal == 0 && moveVertical == 0))
+        //{
+        //    moveSound.Pause(); // Pause the move sound if not sprinting and not moving
+        //}
+        //else
+        //{
+        //    moveSound.UnPause(); // Unpause the move sound if sprinting or moving
+        //}
 
         if (moveHorizontal < 0)
         {
-            newSprite = sRight;
+            //newSprite = sRight;
             transform.localScale = new Vector3(1, 1, 1);
         }
         else if (moveHorizontal > 0)
         {
-            newSprite = sRight;
+            //newSprite = sRight;
             transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (moveVertical < 0)
         {
-            newSprite = sFront;
+            //newSprite = sFront;
         }
         else if (moveVertical > 0)
         {
-            newSprite = sBack;
+            //newSprite = sBack;
         }
     }
 }
