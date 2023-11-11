@@ -35,6 +35,8 @@ public class Boid : MonoBehaviour
     [SerializeField] GameObject player;
 
     private Vector2 targetPosition;
+
+    private Vector2 flowVector;
     bool shouldFlee;
     void Start()
     {
@@ -89,7 +91,7 @@ public class Boid : MonoBehaviour
 
         //}
         //moveDirection += Flee(targetPosition);
-        // Rörelse med hjälp av Rigidbody2D
+        
         rb.velocity = moveDirection.normalized * speed;
 
         // Rotation
@@ -109,10 +111,14 @@ public class Boid : MonoBehaviour
 
     Vector2 GetFlowDirection()
     {
-
-        return new Vector2(x, y);
+        flowVector = new Vector2(x, y);
+        return flowVector;
     }
 
+    void SetFlowDirection()
+    {
+        flowVector = -flowVector;
+    }
 
     Vector2 Flee(Vector2 fleeTarget)
     {
@@ -179,17 +185,21 @@ public class Boid : MonoBehaviour
         return false;
     }
 
-   
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+       
+        if (collision.CompareTag("Wall"))
+        {
+
+            SetFlowDirection();
+        }
+
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Om Boid-kollision med väggen, ändra riktning
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            // Ändra riktningen när en kollision med väggen inträffar
-            Vector2 reflectDirection = Vector2.Reflect(rb.velocity.normalized, collision.contacts[0].normal);
-            rb.velocity = reflectDirection * speed;
-        }
+       
     }
 
     Vector2 Separate()
