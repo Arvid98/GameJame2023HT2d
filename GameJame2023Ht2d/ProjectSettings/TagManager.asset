@@ -7,6 +7,12 @@ TagManager:
   - Boid
   - Wall
   - Enemy
+  - Eminem
+  - Britney
+  - Marilyn
+  - MIA
+  - TLC
+  - Chumba
   layers:
   - Default
   - TransparentFX
