@@ -5,12 +5,13 @@ using UnityEngine;
 public class OpenMessages : MonoBehaviour
 {
     public GameObject canvasToOpen;
-    
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+        audioSource.time = 1.1f;
     }
 
     // Update is called once per frame
@@ -19,6 +20,7 @@ public class OpenMessages : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            audioSource.Play();
             canvasToOpen.SetActive(true);
         }
     }

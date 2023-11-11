@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class CloseMessageBox : MonoBehaviour
 {
-    GameObject myGameObject;
+    public GameObject myGameObject;
+    AudioSource audioSource;
     private void Start()
     {
-        myGameObject = GetComponent<GameObject>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.time = 1.1f;
     }
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            myGameObject.SetActive(true);
+            audioSource.Play();
+            myGameObject.SetActive(false);
         }
     }
 }
