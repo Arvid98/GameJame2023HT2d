@@ -179,6 +179,8 @@ public class Boid : MonoBehaviour
         return false;
     }
 
+   
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Om Boid-kollision med väggen, ändra riktning
