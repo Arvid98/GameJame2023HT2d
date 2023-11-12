@@ -3,13 +3,19 @@ using UnityEngine;
 public class SongPicker : MonoBehaviour
 {
     public int songNumber = 0;
-    public GameObject mediaPlayer;
+    public GameObject mediaPlayerWindow;
+    MusicPlayerScript musicPlayer;
+    private void Awake()
+    {
+        musicPlayer = FindObjectOfType<MusicPlayerScript>();
+         // Replace with the actual name
+
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetMouseButton(0) && mediaPlayer.active)
+        if (Input.GetMouseButton(0))
         {
-            MusicPlayerScript musicPlayer = gameObject.GetComponentInParent<MusicPlayerScript>();
-
+            
             // Check if the component is found
             if (musicPlayer != null)
             {

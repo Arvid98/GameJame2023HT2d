@@ -7,15 +7,24 @@ public class BoidManager : MonoBehaviour
 {
     public Boid[] boidsArray;
     int deadBoids = 0;
+    Vector2 mid = Vector2.zero;
     void Start()
     {
-       foreach (Boid boid in boidsArray )
-       {
-            
-       }
+       
+
+       
+    }
+    public Vector2 CalculateMid()
+    {
+        Vector2 mid = Vector2.zero;
+        foreach (Boid boid in boidsArray)
+        {
+            mid += (Vector2)boid.transform.position;
+        }
+
+        return mid /= boidsArray.Length;
     }
 
-   
     void Update()
     {       
         foreach (Boid boid in boidsArray)
@@ -34,4 +43,8 @@ public class BoidManager : MonoBehaviour
         deadBoids = 0;
 
     }
+    
+
 }
+
+
