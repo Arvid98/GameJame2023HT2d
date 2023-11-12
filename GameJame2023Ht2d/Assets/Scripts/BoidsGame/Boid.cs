@@ -90,7 +90,7 @@ public class Boid : MonoBehaviour
         {
 
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, -speed * 2.5f * Time.deltaTime);
-            transform.position = Vector2.MoveTowards(this.transform.position, wall.transform.position, -speed * 2 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(this.transform.position, wall.transform.position, -speed * 4 * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle2);
         }
 
