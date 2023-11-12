@@ -3,33 +3,38 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class PauseLabyrint : MonoBehaviour
+public class StartGame : MonoBehaviour
 {
-    private bool isPaused = false; // Start with the game paused
+    private bool isPaused = true; // false för att börja pausad
     public TextMeshProUGUI startText;
     public Transform mus;
+    public Transform goal;
 
-    private void Awake()
+
+    void Awake()
     {
-        mus.position = new Vector2(110, -125);
-    }
-    void Start()
-    {
+        goal.gameObject.SetActive(false);
         
-        TogglePause(); // Call TogglePause to set the initial state
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Player"))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                goal.gameObject.SetActive(true);
+                startText.gameObject.SetActive(false);
+            }
+        }
     }
-
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            TogglePause();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    TogglePause();
+        //}
     }
 
     void TogglePause()
