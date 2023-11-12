@@ -26,7 +26,7 @@ public class FindTheName : MonoBehaviour
 
     bool firstLetter = true; 
     bool secondLetter = true;
-    bool win;
+    public bool win;
 
     int width = 10;
     int height = 7;
