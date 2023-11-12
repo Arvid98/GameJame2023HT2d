@@ -35,8 +35,13 @@ public class Dialogue : MonoBehaviour
         else if(LevelManager.level == 4) 
         {
             lines[0] = "BOSS: Nice job Mr.Hackerman! You are done now, but just to be a little more devious and evil, lets install some nasty viruses on his computer.";
-            lines[1] = "YOU: That sounds like a good idea";
+            lines[1] = "YOU: Sounds like a plan B)";
             LevelManager.level = 5;
+        }
+        else if(LevelManager.level == 6)
+        {
+            lines[0] = "BOSS: Good job today Mr.Hackerman, you can turn off the computer now and collect your pay at the reception :)";
+            lines[1] = "YOU: Najs";
         }
         StartDialogue();
     }

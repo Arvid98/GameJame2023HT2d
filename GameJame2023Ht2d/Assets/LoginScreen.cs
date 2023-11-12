@@ -7,7 +7,10 @@ public class LoginScreen : MonoBehaviour
     public GameObject myGameObject;
     private void Start()
     {
-
+        
+            // Hides the cursor...
+            Cursor.visible = false;
+        
     }
     private void Update()
     {

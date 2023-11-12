@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
+    public bool won = false;
     public TextMeshProUGUI popupText;
     public List<GameObject> mapList; 
     //public Transform map;
@@ -34,7 +35,9 @@ public class Goal : MonoBehaviour
 
             if (countDown < 0)
             {
-                SceneManager.LoadScene("Windows");
+                LevelManager.level = 6;
+                won = true;
+             //   SceneManager.LoadScene("Windows");
 
             }
         }

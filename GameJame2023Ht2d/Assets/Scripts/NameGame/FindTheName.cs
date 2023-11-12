@@ -1,11 +1,11 @@
 using TMPro;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
-using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+//using static UnityEditor.PlayerSettings;
+//using System;
+//using System.Collections.Generic;
+//using Unity.VisualScripting;
+//using UnityEngine.SceneManagement;
+//using UnityEngine.UI;
 
 public class FindTheName : MonoBehaviour
 {
