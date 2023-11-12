@@ -12,18 +12,14 @@ public class SwitchToWindows : MonoBehaviour
         findTheName = GetComponent<FindTheName>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ExitClick()
     {
-        
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(Input.GetMouseButton(0) && findTheName.win) 
+        if (findTheName.win)
         {
+            Cursor.visible = false;
             LevelManager.level = 2;
             SceneManager.LoadScene("Windows");
+
         }
     }
 }

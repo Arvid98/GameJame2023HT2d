@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class MouseFollower : MonoBehaviour
 {
-    private Camera mainCamera;
+    public Camera mainCamera;
     private Vector2 mousePosition;
 
     [SerializeField]

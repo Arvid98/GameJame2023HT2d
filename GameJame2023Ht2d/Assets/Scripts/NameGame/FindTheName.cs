@@ -42,6 +42,8 @@ public class FindTheName : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = true;
+
         buttons = new GameObject[width, height];
 
         lettersInName = name.Length;
