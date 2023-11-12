@@ -15,9 +15,10 @@ public class FindTheName : MonoBehaviour
     public GameObject square;
     public GameObject[,] buttons;
     public GameObject ParentPanel;
+    public GameObject WinText;
 
     Vector2 buttonSize = new Vector2(100, 100);
-    Vector2 spawnPoint = new Vector2(-500f, 300f);
+    Vector2 spawnPoint = new Vector2(-460f, 250f);
     Vector2 previousButton;
     Vector2 direction = Vector2.zero;
     Vector2 namePos = Vector2.zero;
@@ -132,7 +133,7 @@ public class FindTheName : MonoBehaviour
             if (placement == vertical)
             {
                 buttons[x, y + i].GetComponentInChildren<TMP_Text>().text = name[i].ToString();
-                //buttons[x, y+i].GetComponentInChildren<TMP_Text>().color = Color.red;
+                //buttons[x, y + i].GetComponentInChildren<TMP_Text>().color = Color.red;
 
             }
 
@@ -146,8 +147,14 @@ public class FindTheName : MonoBehaviour
         if(clickedLetters == name)
         {
             win = true;
-            LevelManager.level = 2;
-            SceneManager.LoadScene("Windows");
+            WinText.SetActive(true);
+
+            foreach(var obj in buttons)
+            {
+                obj.SetActive(false);
+            }
+            //LevelManager.level = 2;
+            //SceneManager.LoadScene("Windows");
 
         }
     }
