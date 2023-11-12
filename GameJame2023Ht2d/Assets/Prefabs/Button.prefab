@@ -181,6 +181,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   pos: {x: 0, y: 0}
   activeButton: 0
+  placed: 0
 --- !u!1 &8140327485284219101
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,3 +332,4 @@ MonoBehaviour:
   owner: {fileID: 0}
   pos: {x: 0, y: 0}
   activeButton: 0
+  placed: 0
