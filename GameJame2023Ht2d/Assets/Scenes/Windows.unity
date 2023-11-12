@@ -1290,7 +1290,7 @@ MonoBehaviour:
 
 
     This game
-    was made during the game jam lab ht 2023. Thanks for playing :)'
+    was made during the Game Lab Jam HT2023. Thanks for playing :)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5102,7 +5102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1794077472
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5164,8 +5164,8 @@ Transform:
   m_GameObject: {fileID: 1794077471}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.96, y: -0.45, z: 0}
-  m_LocalScale: {x: 1.8132, y: 1.8132, z: 1.8132}
+  m_LocalPosition: {x: -1.9276, y: -0.40299, z: -2.3782}
+  m_LocalScale: {x: 1.9092995, y: 1.9092995, z: 1.9092995}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1251041817}
