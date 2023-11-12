@@ -1281,16 +1281,16 @@ MonoBehaviour:
     Kim Svedberg - Lead
     Design & The Name Game
 
-    Arvid Johansson - The Information Collector
+    Arvid Johansson - The Collector Game
 
-    Sam
-    Shariati - The Maze Game
+    Sam Shariati
+    - The Maze Game
 
     Victor Gustafsson - Windows XP
 
 
-    This game
-    was made during the Game Lab Jam HT2023. Thanks for playing :)'
+    This game was made
+    during the Game Lab Jam HT2023. Thanks for playing :)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
