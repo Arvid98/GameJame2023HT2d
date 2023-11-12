@@ -5,17 +5,20 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FindTheName : MonoBehaviour
 {
     // Start is called before the first frame update
+    System.Random rnd = new System.Random();
 
     public GameObject square;
     public GameObject[,] buttons;
     public GameObject ParentPanel;
+    public GameObject WinText;
 
     Vector2 buttonSize = new Vector2(100, 100);
-    Vector2 spawnPoint = new Vector2(-500f, 300f);
+    Vector2 spawnPoint = new Vector2(-460f, 250f);
     Vector2 previousButton;
     Vector2 direction = Vector2.zero;
     Vector2 namePos = Vector2.zero;
@@ -23,17 +26,19 @@ public class FindTheName : MonoBehaviour
 
     bool firstLetter = true; 
     bool secondLetter = true;
-    bool win;
+    public bool win;
 
     int width = 10;
     int height = 7;
     int lettersInName;
+    int horizontal = 0;
+    int vertical = 1;
+   
     char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-    string clickedLetters; 
 
-    System.Random rnd = new System.Random();
 
     string name = "TIMMY";
+    string clickedLetters; 
 
     void Start()
     {
@@ -56,7 +61,8 @@ public class FindTheName : MonoBehaviour
                 buttons[i, j].GetComponentInChildren<TMP_Text>().text = alphabet[nr].ToString();
             }
         }
-        AddName();
+
+        RandomizeNamePlacement();
     }
 
     public void Check(ButtonScript obj)
@@ -112,12 +118,28 @@ public class FindTheName : MonoBehaviour
         clickedLetters = "";
     }
 
-    void AddName()
+    void AddName(int x, int y, int placement)
     {
         for (int i = 0; i < lettersInName; i++)
         {
-            buttons[(int)namePos.x + i, (int)namePos.y].GetComponentInChildren<TMP_Text>().text = name[i].ToString();
+            if (placement == horizontal)
+            {
+                buttons[x + i, y].GetComponentInChildren<TMP_Text>().text = name[i].ToString();
+                //buttons[x + i, y].GetComponentInChildren<TMP_Text>().color = Color.red;
+
+
+            }
+
+            if (placement == vertical)
+            {
+                buttons[x, y + i].GetComponentInChildren<TMP_Text>().text = name[i].ToString();
+                //buttons[x, y + i].GetComponentInChildren<TMP_Text>().color = Color.red;
+
+            }
+
         }
+
+
     }
 
     public void CheckString()
@@ -125,9 +147,35 @@ public class FindTheName : MonoBehaviour
         if(clickedLetters == name)
         {
             win = true;
-            LevelManager.level = 2;
-            SceneManager.LoadScene("Windows");
+            WinText.SetActive(true);
+
+            foreach(var obj in buttons)
+            {
+                obj.SetActive(false);
+            }
+            //LevelManager.level = 2;
+            //SceneManager.LoadScene("Windows");
 
         }
+    }
+
+    void RandomizeNamePlacement()
+    {
+        int placement = rnd.Next(horizontal, vertical+1);
+        int x = 0, y = 0;
+
+        if(placement == horizontal)
+        {
+            x = rnd.Next(0, width - name.Length);
+            y = rnd.Next(0, height);
+        }
+        else if(placement == vertical)
+        {
+            x = rnd.Next(0, width);
+            y = rnd.Next(0, height - name.Length);
+        }
+
+        AddName(x, y, placement);
+
     }
 }
