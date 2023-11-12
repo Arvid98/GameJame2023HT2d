@@ -22,7 +22,7 @@ public class Dialogue : MonoBehaviour
         lines = new string[10];
         if (LevelManager.level == 0)
         {
-            lines[0] = "BOSS: Hello Mr.Hackerman, you need to hack ASAP. Open up NSM and hack the good guy! >:)";
+            lines[0] = "BOSS: Hello Mr.Hackerman, you need to hack ASAP. Open up NSM and hack the good guy Timmy Burch! >:)";
             lines[1] = "YOU: Yes sir boss sir!";
             LevelManager.level = 1;
         }

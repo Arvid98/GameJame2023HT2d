@@ -5,6 +5,7 @@ using UnityEngine;
 public class winCon : MonoBehaviour
 {
     public GameObject winScreen;
+    public int levelCap;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,15 +13,15 @@ public class winCon : MonoBehaviour
     }
     private void Awake()
     {
-        if(LevelManager.level == 6)
-        {
-            winScreen.SetActive(true);
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (LevelManager.level >= levelCap)
+        {
+            winScreen.SetActive(true);
+        }
     }
 }
